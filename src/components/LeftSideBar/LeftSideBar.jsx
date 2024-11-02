@@ -401,40 +401,6 @@
 
 // export default LeftSideBar;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useContext, useEffect, useState } from "react";
 import "./LeftSideBar.css";
 import assets from "../../assets/assets";
@@ -592,7 +558,7 @@ const LeftSideBar = () => {
             <div className="sub-menu">
               <p onClick={() => navigate("/profile")}>Edit Profile</p>
               <hr />
-              <p onClick={()=> logout()}> Logout</p>
+              <p onClick={() => logout()}> Logout</p>
             </div>
           </div>
         </div>
@@ -612,24 +578,25 @@ const LeftSideBar = () => {
             <p>{user.name}</p>
           </div>
         ) : chatData && chatData.length > 0 ? (
-          chatData.map((item, index) =>
-            item.userData ? (
-              <div
-                onClick={() => setChat(item)}
-                key={index}
-                className={`friends ${
-                  item.messageSeen || item.messageId === messagesId
-                    ? ""
-                    : "border"
-                }`}
-              >
-                <img src={item.userData.avatar} alt="Avatar" />
-                <div>
-                  <p>{item.userData.name}</p>
-                  <span>{item.lastMessage || "No messages yet"}</span>
+          chatData.map(
+            (item, index) =>
+              item.userData ? (
+                <div
+                  onClick={() => setChat(item)}
+                  key={index}
+                  className={`friends ${
+                    item.messageSeen || item.messageId === messagesId
+                      ? ""
+                      : "border"
+                  }`}
+                >
+                  <img src={item.userData.avatar} alt="Avatar" />
+                  <div>
+                    <p>{item.userData.name}</p>
+                    <span>{item.lastMessage || "No messages yet"}</span>
+                  </div>
                 </div>
-              </div>
-            ) : null // Do not display if userData is missing
+              ) : null // Do not display if userData is missing
           )
         ) : (
           <p className="no-chats">No chats available.</p>
@@ -640,4 +607,3 @@ const LeftSideBar = () => {
 };
 
 export default LeftSideBar;
-
